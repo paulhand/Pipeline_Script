@@ -1,0 +1,69 @@
+pipeline {
+	agent none
+	stages {
+		stage('Non-parallel') {
+			agent {
+				label 'built-in'
+			}
+			steps {
+				echo "Checking out from Git repo!!";
+				/* git branch: 'main', credentialsId: 'db659cff-55be-460e-b394-774d96b1d8dd', url: 'https://github.com/paulhand/Pipeline_Script.git' */
+			}
+		}
+		
+		stage('Parallel Runs') {
+			parallel {
+				stage('Build on Windows_Node_Group') {
+					agent {
+						label 'Windows_Node_Group'
+					}
+					steps {
+						echo "Building on the Windows_Node_Group!";
+						bat 'Build.bat';
+					}
+				}
+			
+			
+				stage('Unit Test on Windows_Node_Group') {
+					agent {
+						label 'Windows_Node_Group'
+					}
+					steps {
+							echo "Running the Unit Test!";
+							bat 'Unit.bat'
+					}
+				}
+		
+				
+				stage('Deployed on Master') {
+					agent {
+						label 'built-in';
+					}
+					steps {
+						echo "Deploying the Job on Master!";
+						bat 'Deploy.bat'
+					}
+				}
+			}
+		}
+		
+		post {
+			always {
+				echo 'This will always run'
+			}
+			success {
+				echo 'This will run only if successful'
+			}
+			failure {
+				echo 'This will run only if failed'
+			}
+			unstable {
+				echo 'This will run only if the run was marked unstable'
+			}
+			changed {
+				echo 'This will run only if the state of the pipeline has changed'
+				echo 'For example, if the pipeline was previously failing but is now successful'
+			}
+		}
+	}
+}
