@@ -1,1 +1,1 @@
-echo "Running Unit Test Cases : `date`"
+echo "Running Unit Test Cases !"
