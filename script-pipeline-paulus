@@ -19,7 +19,8 @@ pipeline {
 					}
 					steps {
 						echo "Building on the Ubuntu_Node_Group!";
-						bat 'Build.bat';
+						/* bat 'Build.bat';*/
+						./Build.bat
 					}
 				}
 			
@@ -30,7 +31,8 @@ pipeline {
 					}
 					steps {
 							echo "Running the Unit Test!";
-							bat 'Unit.bat'
+							/* bat 'Unit.bat'*/
+							./Unit.bat
 					}
 				}
 		
