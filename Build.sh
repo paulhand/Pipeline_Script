@@ -1,1 +1,2 @@
-echo "I am building at `date` - `time`"
+#!/usr/bin/bash
+echo "I am building at `date`"
