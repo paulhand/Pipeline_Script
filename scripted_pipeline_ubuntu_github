@@ -42,7 +42,7 @@ pipeline {
 					}
 				}
 				
-				stage('Build on Ubuntu_Node_Group') {
+				/*stage('Build on Ubuntu_Node_Group') {
 					agent {
 						label 'Ubuntu_Node_Group'
 					}
@@ -72,7 +72,7 @@ pipeline {
 						echo "Deploying the Job on Master!";
 						bat 'Deploy.bat'
 					}
-				}
+				}*/
 			}
 		}
 	}
