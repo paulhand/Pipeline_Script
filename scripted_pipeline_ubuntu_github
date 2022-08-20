@@ -31,8 +31,7 @@ pipeline {
 					steps {
 							echo "Running the Unit Test!";
 							sh Unit.sh;
-							
-					}
+						}
 				}
 		
 				
