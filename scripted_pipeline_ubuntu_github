@@ -22,13 +22,23 @@ pipeline {
 					}
 				}*/
 				
-				stage('Source Composition Analysis') {
+				/*stage('Source Composition Analysis') {
 					agent { label 'Ubuntu_Node_Group' }
 					steps {
 						sh 'rm owasp* || true';
 						sh 'wget https://raw.githubusercontent.com/cehkunal/webapp/master/owasp-dependency-check.sh';
 						sh 'chmod u+x owasp-dependency-check.sh';
 						sh 'bash owasp-dependency-check.sh';
+					}
+				}*/
+				
+				stage('SAST') { 
+					agent { label 'Ubuntu_Node_Group' }
+					steps {
+						withSonarQubeEnv('sonar') {
+							sh 'mvn sonar:sonar'
+							sh 'cat target/sonar/report-task.txt'
+						}
 					}
 				}
 				
