@@ -32,7 +32,7 @@ pipeline {
 					}
 				}*/
 				
-				/*stage('SAST') { 
+				stage('SAST') { 
 					agent { label 'Ubuntu_Node_Group' }
 					steps {
 						withSonarQubeEnv('Sonar') {
@@ -40,9 +40,9 @@ pipeline {
 							sh 'cat target/sonar/report-task.txt'
 						}
 					}
-				}*/
+				}
 				
-				stage('Build on Ubuntu_Node_Group') {
+				/*stage('Build on Ubuntu_Node_Group') {
 					agent {
 						label 'Ubuntu_Node_Group'
 					}
@@ -54,7 +54,7 @@ pipeline {
 				}
 			
 			
-				/*stage('Unit Test on Ubuntu_Node_Group') {
+				stage('Unit Test on Ubuntu_Node_Group') {
 					agent {
 						label 'Ubuntu_Node_Group'
 					}
