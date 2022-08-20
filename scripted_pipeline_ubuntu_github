@@ -13,6 +13,15 @@ pipeline {
 		
 		stage('Parallel Runs') {
 			parallel {
+				stage('Check-Git-Secrets') {
+					agent { label 'Ubuntu_Node_Group' }
+					steps {
+						sh 'rm trufflehog || true';
+						sh 'docker run gesellix/trufflehog https://github.com/cehkunal/webapp > trufflehog';
+						sh 'cat trufflehog';
+					}
+				}
+				
 				stage('Build on Ubuntu_Node_Group') {
 					agent {
 						label 'Ubuntu_Node_Group'
