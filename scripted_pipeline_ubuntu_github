@@ -19,7 +19,6 @@ pipeline {
 					}
 					steps {
 						echo "Building on the Ubuntu_Node_Group!";
-						chmod u+x './Build.sh';
 						sh './Build.sh';
 						}
 				}
@@ -31,7 +30,6 @@ pipeline {
 					}
 					steps {
 							echo "Running the Unit Test!";
-							chmod u+x './Unit.sh';
 							sh './Unit.sh';
 						}
 				}
