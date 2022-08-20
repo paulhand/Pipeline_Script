@@ -32,7 +32,7 @@ pipeline {
 					}
 				}*/
 				
-				stage('SAST') { 
+				/*stage('SAST') { 
 					agent { label 'Ubuntu_Node_Group' }
 					steps {
 						withSonarQubeEnv('Sonar') {
@@ -40,7 +40,7 @@ pipeline {
 							sh 'cat target/sonar/report-task.txt'
 						}
 					}
-				}
+				}*/
 				
 				/*stage('Build on Ubuntu_Node_Group') {
 					agent {
@@ -61,7 +61,7 @@ pipeline {
 							echo "Running the Unit Test!";
 							sh './Unit.sh';
 						}
-				}
+				}*/
 		
 				
 				stage('Deployed on Master') {
@@ -70,9 +70,10 @@ pipeline {
 					}
 					steps {
 						echo "Deploying the Job on Master!";
+						bat 'java -version'
 						bat 'Deploy.bat'
 					}
-				}*/
+				}
 			}
 		}
 	}
