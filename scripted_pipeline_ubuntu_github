@@ -19,7 +19,7 @@ pipeline {
 					}
 					steps {
 						echo "Building on the Ubuntu_Node_Group!";
-						/usr/bin/sh './Build.sh';
+						'./Build.sh';
 						}
 				}
 			
@@ -30,7 +30,7 @@ pipeline {
 					}
 					steps {
 							echo "Running the Unit Test!";
-							/usr/bin/sh './Unit.sh';
+							'./Unit.sh';
 						}
 				}
 		
