@@ -15,18 +15,18 @@ pipeline {
 			parallel {
 				stage('Build on Windows_Node_Group') {
 					agent {
-						label 'Windows_Node_Group'
+						label 'Ubuntu_Node_Group'
 					}
 					steps {
-						echo "Building on the Windows_Node_Group!";
+						echo "Building on the Ubuntu_Node_Group!";
 						bat 'Build.bat';
 					}
 				}
 			
 			
-				stage('Unit Test on Windows_Node_Group') {
+				stage('Unit Test on Ubuntu_Node_Group') {
 					agent {
-						label 'Windows_Node_Group'
+						label 'Ubuntu_Node_Group'
 					}
 					steps {
 							echo "Running the Unit Test!";
