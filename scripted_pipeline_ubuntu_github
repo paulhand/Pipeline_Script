@@ -22,7 +22,7 @@ pipeline {
 					}
 				}*/
 				
-				/*stage('Source Composition Analysis') {
+				stage('Source Composition Analysis') {
 					agent { label 'Ubuntu_Node_Group' }
 					steps {
 						sh 'rm owasp* || true';
@@ -30,7 +30,7 @@ pipeline {
 						sh 'chmod u+x owasp-dependency-check.sh';
 						sh 'bash owasp-dependency-check.sh';
 					}
-				}*/
+				}
 				
 				/*stage('SAST') { 
 					agent { label 'Ubuntu_Node_Group' }
@@ -76,12 +76,12 @@ pipeline {
 					}
 				}*/
 				
-				stage('DAST') {
+				/*stage('DAST') {
 					agent { label 'Ubuntu_Node_Group' }
 					steps { 
 						  sh "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://192.168.228.38:8081/mvnwebapp || true"
 					  }
-				}
+				}*/
 			}
 		}
 	}
