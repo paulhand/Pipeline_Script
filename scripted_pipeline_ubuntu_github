@@ -75,6 +75,14 @@ pipeline {
 						bat 'Deploy.bat'
 					}
 				}
+				
+				stage('DAST') {
+					steps {
+						sshagent('jenkins') {
+						  sh 'ssh -o StrictKeyHostChecking=no jenkins@192.168.228.163 "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://192.168.228.38:8081/mvnwebapp"'
+						}
+					}
+				}
 			}
 		}
 	}
