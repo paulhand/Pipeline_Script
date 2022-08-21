@@ -42,7 +42,7 @@ pipeline {
 					}
 				}*/
 				
-				/*stage('Build on Ubuntu_Node_Group') {
+				stage('Build on Ubuntu_Node_Group') {
 					agent {
 						label 'Ubuntu_Node_Group'
 					}
@@ -62,7 +62,7 @@ pipeline {
 							echo "Running the Unit Test!";
 							sh './Unit.sh';
 						}
-				}*/
+				}
 		
 				
 				stage('Deployed on Master') {
@@ -76,12 +76,12 @@ pipeline {
 					}
 				}
 				
-				stage('DAST') {
+				/*stage('DAST') {
 					agent { label 'Ubuntu_Node_Group' }
 					steps { 
 						  sh "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://192.168.228.38:8081/mvnwebapp || true"
 					  }
-				}
+				}*/
 			}
 		}
 	}
